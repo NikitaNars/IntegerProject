@@ -16,8 +16,6 @@ public:
 	void SetSign(const bool& sign);
 	void SetUnits(const unsigned& units);
 
-	void SetSign(const bool &sign);
-	void SetUnits(const unsigned &units);
 
 
 	bool GetSign();
@@ -69,51 +67,6 @@ public:
 
 
 
-
-	// проверка на четность
-	bool isOdd()const;
-	// проверка на положительность
-	bool isPlus()const;
-	// проверка является ли число простым
-	bool isSimpleNum()const;
-	// нахождение наибольшего общего делителя
-	int NOD(Integer other)const;
-	// нахождение наибольшего общего кратного
-	int NOK(Integer other)const;
-	// проверка являются ли числа взаимнопростыми
-	bool tryNums(const Integer &other)const;
-
-	// --------------------------------------------------
-	// Сумма
-	friend Integer operator+(const Integer& a, const Integer& b);
-	// Разность
-	friend Integer operator-(const Integer& a, const Integer& b);
-	// Умножение
-	friend Integer operator*(const Integer& a, const Integer& b);
-	// Частное
-	friend Integer operator/(const Integer& a, const Integer& b);
-	// Деление с остатком
-	friend Integer operator%(const Integer& a, const Integer& b);
-	// Операторы присваивания
-	Integer& operator+=(const Integer& other);
-
-	Integer& operator-=(const Integer& other);
-
-	Integer& operator*=(const Integer& other);
-
-	Integer& operator/=(const Integer& other);
-
-
-
-
-	Integer operator++(int);
-
-
-	Integer operator--(int);
-
-
-
-
 	Integer operator++();
 
 
@@ -137,7 +90,6 @@ public:
 
 
 
-	Integer operator+();
 
 
 	Integer operator-();

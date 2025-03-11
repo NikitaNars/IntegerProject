@@ -1,2 +1,9 @@
 #include "Rational.h"
-Rational num1;
+#include "Integer.h"
+
+int main()
+{
+	Integer num{ -1 };
+	std::cout << num++;
+	std::cout << num;
+}

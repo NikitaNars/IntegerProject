@@ -278,11 +278,15 @@ Integer Integer::operator++(int)
 {
 	if (sign_ == true)
 	{
-		units_++;
+		Integer temp = units_;
+		units_--;
+		return temp;
 	}
 	else
 	{
-		units_--;
+		Integer temp = units_;
+		units_++;
+		return temp;
 	}
 	return units_;
 }
@@ -291,13 +295,17 @@ Integer Integer::operator--(int)
 {
 	if (sign_ == true)
 	{
-		units_--;
+		Integer temp = units_;
+		units_++;
+		return temp;
 	}
 	else
 	{
-		units_++;
+		Integer temp = units_;
+		units_--;
+		return temp;
 	}
-	return units_;
+	
 }
 
 
@@ -307,11 +315,11 @@ Integer Integer::operator++()
 {
 	if (sign_ == true)
 	{
-		++(units_);
+		--(units_);
 	}
 	else
 	{
-		--(units_);
+		++(units_);
 	}
 	return units_;
 }
@@ -321,11 +329,11 @@ Integer Integer::operator--()
 {
 	if (sign_ == true)
 	{
-		--(units_);
+		++(units_);
 	}
 	else
 	{
-		++(units_);
+		--(units_);
 	}
 	return units_;
 }
@@ -424,7 +432,7 @@ Integer Integer::operator-()
 // вывод
 std::ostream& operator<<(std::ostream& out, const Integer& other)
 {
-	if (other.sign_ == true)
+	if (other.sign_ == true && other.units_ != 0)
 	{
 		out << '-' << other.units_;
 	}
