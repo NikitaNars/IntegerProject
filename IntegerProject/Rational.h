@@ -33,8 +33,8 @@ public:
 
 	bool isSame(const Rational& other) const;
 
-	std::string recRational();
-
+	Rational recRational();
+	Rational simplification();
 	Integer CountUnits() const;
 
 	bool operator==(const Rational& other) const;

@@ -7,6 +7,7 @@ Rational::Rational(bool sign, Integer num, Integer deNum) :sign_(sign), num_(num
 	{
 		throw std::invalid_argument("Знаменатель не может быть меньше нуля");
 	}
+	
 
 }
 
@@ -56,12 +57,12 @@ Integer Rational::GetDeNum()
 
 bool Rational::isProper() const
 {
-	return num_ > denum_;
+	return num_ < denum_;
 }
 
 bool Rational::isNotProper() const
 {
-	return num_ < denum_;
+	return num_ > denum_;
 }
 
 bool Rational::isPlus() const
@@ -80,12 +81,19 @@ bool Rational::isSame(const Rational& other) const
 	return this == &other;
 }
 
-std::string Rational::recRational()
+Rational Rational::recRational()
 {
 	Integer temp{ num_ };
 	num_ = denum_;
 	denum_ = temp;
-	return 0;
+	return *this;
+}
+Rational Rational::simplification()
+{
+	int NOD = num_.NOD(denum_);
+	num_ = num_ / NOD;
+	denum_ = denum_ / NOD;
+	return *this;
 }
 Integer Rational::CountUnits() const
 {
