@@ -3,7 +3,11 @@
 
 int main()
 {
-	Integer num{ -1 };
-	std::cout << num++;
-	std::cout << num;
+	Integer num1 = 5;
+	Integer denum1 = 10;
+	Integer num2 = -10;
+	Integer denum2 = 15;
+	Rational number1 { num1, denum1 };
+	Rational number2 { num2, denum2 };
+	std::cout <<-(number1 + number2);
 }

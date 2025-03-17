@@ -1,7 +1,7 @@
 #include "Rational.h"
 
-Rational::Rational() :Rational(false, 0u, 0u) {};
-Rational::Rational(bool sign, Integer num, Integer deNum) :sign_(sign), num_(num), denum_(deNum)
+Rational::Rational() :Rational(Integer(0), Integer(1)) {};
+Rational::Rational( Integer num, Integer deNum) : num_(num), denum_(deNum)
 {
 	if (deNum < 1)
 	{
@@ -99,6 +99,35 @@ Integer Rational::CountUnits() const
 {
 	Integer units = num_ / denum_;
 	return units;
+}
+
+Rational operator+(const Rational& a, const Rational& b)
+{
+	Integer NOK = a.denum_.NOK(b.denum_);
+	Integer multiA, multiB;
+	multiA = NOK / a.denum_;
+	multiB = NOK / b.denum_;
+	Rational result{ a.num_ * multiA + b.num_ * multiB, NOK };
+	return result;
+}
+Rational operator-(const Rational& a, const Rational& b)
+{
+	Integer NOK = a.denum_.NOK(b.denum_);
+	Integer multiA, multiB;
+	multiA = NOK / a.denum_;
+	multiB = NOK / b.denum_;
+	Rational result{ a.num_ * multiA - b.num_ * multiB, NOK };
+	return result;
+}
+Rational operator*(const Rational& a, const Rational& b)
+{
+	Rational result{ a.num_ * b.num_, a.denum_ * b.denum_ };
+	return result;
+}
+Rational operator/(const Rational& a, const Rational& b)
+{
+	Rational result{ a.num_ * b.denum_, a.denum_ * b.num_ };
+	return result;
 }
 bool Rational::operator==(const Rational& other) const
 {
@@ -210,3 +239,25 @@ bool Rational::operator>=(const Rational& other) const
 	}
 }
 
+Rational Rational::operator+()
+{
+	return *this;
+}
+Rational Rational::operator-()
+{
+	Rational result{ *this };
+	result.sign_ = !result.sign_;
+	return result;
+}
+
+std::ostream& operator<<(std::ostream& out, const Rational& obj)
+{
+	if (obj.sign_ == true)
+	{
+		return out << "-(" << obj.num_ << "/" << obj.denum_ << ")";
+	}
+	else
+	{
+		return out << obj.num_ << "/" << obj.denum_;
+	}
+}

@@ -6,7 +6,7 @@ class Rational
 {
 public:
 	Rational();
-	Rational(bool sign, Integer num, Integer deNum);
+	Rational( Integer num, Integer deNum);
 	Rational(Integer number);
 
 	void SetSign(const bool sign);
@@ -37,6 +37,13 @@ public:
 	Rational simplification();
 	Integer CountUnits() const;
 
+
+	friend Rational operator+(const Rational& a, const Rational& b);
+	friend Rational operator-(const Rational& a, const Rational& b);
+	friend Rational operator/(const Rational& a, const Rational& b);
+	friend Rational operator*(const Rational& a, const Rational& b);
+
+
 	bool operator==(const Rational& other) const;
 
 	bool operator<=(const Rational& other) const;
@@ -48,6 +55,11 @@ public:
 	bool operator>(const Rational& other) const;
 
 	bool operator!=(const Rational& other) const;
+
+	Rational operator+();
+	Rational operator-();
+
+	friend std::ostream& operator<<(std::ostream& out, const Rational& obj);;
 
 
 private:
