@@ -19,7 +19,7 @@ public:
 
 
 	bool GetSign()const;
-	unsigned GetUnits();
+	unsigned GetUnits() const;
 
 
 	bool isOdd()const;

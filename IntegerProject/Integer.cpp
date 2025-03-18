@@ -33,7 +33,7 @@ bool Integer::GetSign() const
 	return sign_;
 }
 
-unsigned Integer::GetUnits()
+unsigned Integer::GetUnits() const
 {
 	return units_;
 }

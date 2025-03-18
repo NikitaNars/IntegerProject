@@ -237,6 +237,48 @@ bool Rational::operator>=( Rational& other) const
 		return false;
 	}
 }
+Rational& Rational::operator+=(const Rational& other)
+{
+	*this = *this + other;
+	return *this;
+}
+Rational& Rational::operator-=(const Rational& other)
+{
+	*this = *this - other;
+	return *this;
+}
+Rational& Rational::operator/=(const Rational& other)
+{
+	*this = *this / other;
+	return *this;
+}
+Rational& Rational::operator*=(const Rational& other)
+{
+	*this = *this * other;
+	return *this;
+}
+Rational Rational::operator++()
+{
+	*this += Rational(1);
+	return *this;
+}
+Rational Rational::operator--()
+{
+	*this -= Rational(1);
+	return *this;
+}
+Rational Rational::operator++(int)
+{
+	Rational res = Rational(num_, denum_);
+	++*this;
+	return res;
+}
+Rational Rational::operator--(int)
+{
+	Rational res = Rational(num_, denum_);
+	--*this;
+	return res;
+}
 
 Rational Rational::operator+()
 {

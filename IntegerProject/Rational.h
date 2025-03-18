@@ -56,6 +56,27 @@ public:
 
 	bool operator!=( Rational& other) const;
 
+	Rational& operator+=(const Rational& other);
+
+	Rational& operator-=(const Rational& other);
+
+	Rational& operator*=(const Rational& other);
+
+	Rational& operator/=(const Rational& other);
+
+	Rational operator++(int);
+
+
+	Rational operator--(int);
+
+
+
+	Rational operator++();
+
+
+	Rational operator--();
+
+
 	Rational operator+();
 	Rational operator-();
 
