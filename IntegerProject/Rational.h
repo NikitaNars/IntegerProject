@@ -23,9 +23,9 @@ public:
 	Integer GetDeNum();
 
 
-	bool isPlus() const;
+	bool isPlus();
 
-	bool isMinus() const;
+	bool isMinus() ;
 
 	bool isProper() const;
 
@@ -44,17 +44,17 @@ public:
 	friend Rational operator*(const Rational& a, const Rational& b);
 
 
-	bool operator==(const Rational& other) const;
+	bool operator==( Rational& other) const;
 
-	bool operator<=(const Rational& other) const;
+	bool operator<=( Rational& other) const;
 
-	bool operator>=(const Rational& other) const;
+	bool operator>=( Rational& other) const;
 
-	bool operator<(const Rational& other) const;
+	bool operator<( Rational& other) const;
 
-	bool operator>(const Rational& other) const;
+	bool operator>( Rational& other) const;
 
-	bool operator!=(const Rational& other) const;
+	bool operator!=( Rational& other) const;
 
 	Rational operator+();
 	Rational operator-();
@@ -63,7 +63,6 @@ public:
 
 
 private:
-	bool sign_;
 	Integer num_;
 	Integer denum_;
 };

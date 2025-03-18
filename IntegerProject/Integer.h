@@ -13,12 +13,12 @@ public:
 	Integer(int number);
 
 
-	void SetSign(const bool& sign);
+	void SetSign(const bool& sign); 
 	void SetUnits(const unsigned& units);
 
 
 
-	bool GetSign();
+	bool GetSign()const;
 	unsigned GetUnits();
 
 

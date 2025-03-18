@@ -9,5 +9,5 @@ int main()
 	Integer denum2 = 15;
 	Rational number1 { num1, denum1 };
 	Rational number2 { num2, denum2 };
-	std::cout <<-(number1 + number2);
+	std::cout << number1 + number2;
 }

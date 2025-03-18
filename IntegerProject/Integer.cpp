@@ -17,7 +17,7 @@ Integer::Integer(int number)
 	}
 }
 //сетер
-void Integer::SetSign(const bool& sign)
+void Integer::SetSign(const bool& sign) 
 {
 	this->sign_ = sign;
 }
@@ -28,7 +28,7 @@ void Integer::SetUnits(const unsigned& units)
 }
 
 //гетер
-bool Integer::GetSign()
+bool Integer::GetSign() const
 {
 	return sign_;
 }

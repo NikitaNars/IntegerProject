@@ -16,20 +16,19 @@ Rational::Rational(Integer number)
 {
 	if (number < 0)
 	{
-		sign_ = true;
 		num_ = Integer(-static_cast<Integer>(number));
 		denum_ = static_cast<Integer>(1);
 	}
 	else
 	{
-		sign_ = false;
+
 		num_ = number;
 		denum_ = static_cast<Integer>(1);
 	}
 }
 void Rational::SetSign(const bool sign)
 {
-	sign_ = sign;
+	num_.SetSign(sign);
 }
 void Rational::SetNum(const Integer num)
 {
@@ -42,7 +41,7 @@ void Rational::SetDeNum(const Integer denum)
 
 bool Rational::GetSign()
 {
-	return sign_;
+	return num_.GetSign();
 }
 
 Integer Rational::GetNum()
@@ -65,14 +64,14 @@ bool Rational::isNotProper() const
 	return num_ > denum_;
 }
 
-bool Rational::isPlus() const
+bool Rational::isPlus() 
 {
-	return sign_ == false;
+	return num_.GetSign() == false;
 }
 
-bool Rational::isMinus() const
+bool Rational::isMinus() 
 {
-	return sign_ == true;
+	return num_.GetSign() == true;
 }
 
 
@@ -129,9 +128,9 @@ Rational operator/(const Rational& a, const Rational& b)
 	Rational result{ a.num_ * b.denum_, a.denum_ * b.num_ };
 	return result;
 }
-bool Rational::operator==(const Rational& other) const
+bool Rational::operator==( Rational& other) const
 {
-	if (sign_ == other.sign_)
+	if (num_.GetSign() == other.num_.GetSign())
 	{
 		return num_ == other.num_ && denum_ == other.denum_;
 	}
@@ -139,9 +138,9 @@ bool Rational::operator==(const Rational& other) const
 
 }
 
-bool Rational::operator!=(const Rational& other) const
+bool Rational::operator!=( Rational& other) const
 {
-	if (sign_ == other.sign_)
+	if (num_.GetSign() == other.num_.GetSign())
 	{
 		if (num_ != other.num_ && denum_ != other.denum_)
 		{
@@ -159,17 +158,17 @@ bool Rational::operator!=(const Rational& other) const
 	return false;
 }
 
-bool Rational::operator<(const Rational& other) const
+bool Rational::operator<( Rational& other) const
 {
 	Integer num1;
 	Integer num2;
-	if (sign_ == other.sign_)
+	if (num_.GetSign() == other.num_.GetSign())
 	{
 		num1 = num_ * other.denum_;
 		num2 = denum_ * other.num_;
 		return num1 < num2;
 	}
-	else if (sign_ < other.sign_)
+	else if (num_.GetSign() < other.num_.GetSign())
 	{
 		return true;
 	}
@@ -179,17 +178,17 @@ bool Rational::operator<(const Rational& other) const
 	}
 }
 
-bool Rational::operator>(const Rational& other) const
+bool Rational::operator>( Rational& other) const
 {
 	Integer num1;
 	Integer num2;
-	if (sign_ == other.sign_)
+	if (num_.GetSign() == other.num_.GetSign())
 	{
 		num1 = num_ * other.denum_;
 		num2 = denum_ * other.num_;
 		return num1 > num2;
 	}
-	else if (sign_ > other.sign_)
+	else if (num_.GetSign() > other.num_.GetSign())
 	{
 		return true;
 	}
@@ -199,17 +198,17 @@ bool Rational::operator>(const Rational& other) const
 	}
 }
 
-bool Rational::operator<=(const Rational& other) const
+bool Rational::operator<=( Rational& other) const
 {
 	Integer num1;
 	Integer num2;
-	if (sign_ == other.sign_)
+	if (num_.GetSign() == other.num_.GetSign())
 	{
 		num1 = num_ * other.denum_;
 		num2 = denum_ * other.num_;
 		return num1 <= num2;
 	}
-	else if (sign_ < other.sign_)
+	else if (num_.GetSign() < other.num_.GetSign())
 	{
 		return true;
 	}
@@ -219,17 +218,17 @@ bool Rational::operator<=(const Rational& other) const
 	}
 }
 
-bool Rational::operator>=(const Rational& other) const
+bool Rational::operator>=( Rational& other) const
 {
 	Integer num1;
 	Integer num2;
-	if (sign_ == other.sign_)
+	if (num_.GetSign() == other.num_.GetSign())
 	{
 		num1 = num_ * other.denum_;
 		num2 = denum_ * other.num_;
 		return num1 >= num2;
 	}
-	else if (sign_ > other.sign_)
+	else if (num_.GetSign() > other.num_.GetSign())
 	{
 		return true;
 	}
@@ -246,15 +245,16 @@ Rational Rational::operator+()
 Rational Rational::operator-()
 {
 	Rational result{ *this };
-	result.sign_ = !result.sign_;
+	result.num_.SetSign(!result.num_.GetSign());
+
 	return result;
 }
 
 std::ostream& operator<<(std::ostream& out, const Rational& obj)
 {
-	if (obj.sign_ == true)
+	if (obj.num_.GetSign() == true)
 	{
-		return out << "-(" << obj.num_ << "/" << obj.denum_ << ")";
+		return out << obj.num_ << "/" << obj.denum_ ;
 	}
 	else
 	{
