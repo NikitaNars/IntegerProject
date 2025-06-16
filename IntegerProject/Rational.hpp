@@ -1,5 +1,5 @@
 #pragma once
-#include "Integer.h"
+#include "Integer.hpp"
 #include <string>
 
 class Rational

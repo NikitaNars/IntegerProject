@@ -1,4 +1,4 @@
-#include "Rational.h"
+#include "Rational.hpp"
 
 Rational::Rational() :Rational(Integer(0), Integer(1)) {};
 Rational::Rational( Integer num, Integer deNum) : num_(num), denum_(deNum)

@@ -1,5 +1,5 @@
-#include "Rational.h"
-#include "Integer.h"
+#include "Rational.hpp"
+#include "Integer.hpp"
 
 int main()
 {
